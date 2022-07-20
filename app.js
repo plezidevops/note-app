@@ -12,8 +12,21 @@ yarg.version('1.1.0');
 yarg.command(
   'add',
   'Add a new Note',
-  function () {
-    console.log('Adding the new note!');
+  {
+    title: {
+      describe: 'Note title',
+      demandOption: true,
+      type: 'string'
+    },
+    body: {
+      describe: 'Note body',
+      demandOption: true,
+      type: 'string'
+    }
+  },
+  function (argv) {
+    console.log(`Title: ${argv.title}`);
+    console.log(`Body: ${argv.body}`);
   }
 );
 
@@ -21,8 +34,16 @@ yarg.command(
 yarg.command(
   'remove',
   'Removing a note',
-  function () {
-    console.log('Remove the note');
+  function (yarg) {
+    return yarg.option(
+      'title',
+      {
+        describe: 'Note title'
+      }
+    );
+  },
+  function (argv) {
+    console.log(argv);
   }
 );
 
@@ -44,4 +65,4 @@ yarg.command(
   }
 );
 
-console.log(yarg.argv);
+yarg.parse();
