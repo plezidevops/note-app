@@ -65,9 +65,9 @@ const removeNote = title => {
 
 const listNotes = () => {
   const notes = loadNotes();
-  notes.forEach(note => {
-    console.log(`${chalk.blueBright.bold(note.title)} => ${note.body}`);
-  });
+  notes.forEach(note =>
+    console.log(`${chalk.blueBright.bold(note.title)} => ${note.body}`)
+  );
 };
 
 const readNote = title => {
