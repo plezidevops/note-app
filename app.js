@@ -25,8 +25,7 @@ yarg.command(
     }
   },
   function (argv) {
-    console.log(`Title: ${argv.title}`);
-    console.log(`Body: ${argv.body}`);
+    notes.addNote(argv.title, argv.body);
   }
 );
 
@@ -38,12 +37,14 @@ yarg.command(
     return yarg.option(
       'title',
       {
-        describe: 'Note title'
+        describe: 'Note title',
+        demandOption: true,
+        type: 'string'
       }
     );
   },
   function (argv) {
-    console.log(argv);
+    notes.removeNote(argv.title);
   }
 );
 
