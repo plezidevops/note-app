@@ -1,16 +1,16 @@
 import fs from 'fs';
 import chalk from 'chalk';
 
-const getNotes = function () {
+const getNotes = () => {
   return 'Take the dog for a walk.';
 };
 
-const saveNotes = function (notes) {
+const saveNotes = notes => {
   const dataJSON = JSON.stringify(notes);
   fs.writeFileSync('notes.json', dataJSON);
 };
 
-const loadNotes = function () {
+const loadNotes = () => {
   try {
     const dataBuffer = fs.readFileSync('notes.json');
     const dataJSON = dataBuffer.toString();
@@ -20,7 +20,7 @@ const loadNotes = function () {
   }
 };
 
-const addNote = function (title, body) {
+const addNote = (title, body) => {
   const notes = loadNotes();
 
   const duplicateNotes = notes.filter(function (note) {
@@ -41,7 +41,7 @@ const addNote = function (title, body) {
   }
 };
 
-const removeNote = function (title) {
+const removeNote = title => {
   // Load the notes
   let found = false;
   const notes = loadNotes();
@@ -63,16 +63,31 @@ const removeNote = function (title) {
   }
 };
 
-const listNotes = function () {
+const listNotes = () => {
   const notes = loadNotes();
-  notes.forEach(function (note) {
+  notes.forEach(note => {
     console.log(`${chalk.blueBright.bold(note.title)} => ${note.body}`);
   });
+};
+
+const readNote = title => {
+  const notes = loadNotes();
+  const note = notes.filter(note => {
+    return note.title === title;
+  });
+
+  if (note.length > 0) {
+    console.log(`${chalk.blueBright.bold(note[0].title)} => ${note[0].body}`);
+  } else {
+    console.log(chalk.bgRed('No note found!'));
+  }
+
 };
 
 export default {
   getNotes,
   addNote,
   removeNote,
-  listNotes
+  listNotes,
+  readNote
 };

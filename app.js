@@ -24,46 +24,43 @@ yarg.command(
       type: 'string'
     }
   },
-  function (argv) {
-    notes.addNote(argv.title, argv.body);
-  }
+  argv => notes.addNote(argv.title, argv.body)
 );
 
 // Remove a note
 yarg.command(
   'remove',
   'Removing a note',
-  function (yarg) {
-    return yarg.option(
-      'title',
-      {
-        describe: 'Note title',
-        demandOption: true,
-        type: 'string'
-      }
-    );
-  },
-  function (argv) {
-    notes.removeNote(argv.title);
-  }
+  yarg => yarg.option(
+    'title',
+    {
+      describe: 'Note title',
+      demandOption: true,
+      type: 'string'
+    }
+  ),
+  argv => notes.removeNote(argv.title)
 );
 
 // List the notes
 yarg.command(
   'list',
   'List the notes',
-  function () {
-    notes.listNotes();
-  }
+  () => notes.listNotes()
 );
 
 // read the notes
 yarg.command(
   'read',
   'Read a note',
-  function () {
-    console.log('Read the notes');
-  }
+  {
+    title: {
+      describe: 'Note title',
+      demandOption: true,
+      type: 'string'
+    }
+  },
+  argv => notes.readNote(argv.title)
 );
 
 yarg.parse();
