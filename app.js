@@ -53,7 +53,7 @@ yarg.command(
   'list',
   'List the notes',
   function () {
-    console.log('List all the notes!');
+    notes.listNotes();
   }
 );
 

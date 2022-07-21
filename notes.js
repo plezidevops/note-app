@@ -1,4 +1,5 @@
 import fs from 'fs';
+import chalk from 'chalk';
 
 const getNotes = function () {
   return 'Take the dog for a walk.';
@@ -62,8 +63,16 @@ const removeNote = function (title) {
   }
 };
 
+const listNotes = function () {
+  const notes = loadNotes();
+  notes.forEach(function (note) {
+    console.log(`${chalk.blueBright.bold(note.title)} => ${note.body}`);
+  });
+};
+
 export default {
   getNotes,
   addNote,
-  removeNote
+  removeNote,
+  listNotes
 };
