@@ -1,0 +1,25 @@
+{
+  "name": "notes-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/plezidevops/note-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/plezidevops/note-app/issues"
+  },
+  "homepage": "https://github.com/plezidevops/note-app#readme",
+  "dependencies": {
+    "chalk": "^5.0.1",
+    "validator": "^13.7.0",
+    "yargs": "^17.5.1"
+  }
+}

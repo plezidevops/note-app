@@ -56,10 +56,10 @@ const removeNote = function (title) {
 
   // save note if found
   if (found) {
-    console.log('Note has been removed');
+    console.log(chalk.bgGreen('Note removed!'));
     saveNotes(notes);
   } else {
-    console.log('can\' find note.');
+    console.log(chalk.bgRed('No note removed!'));
   }
 };
 
